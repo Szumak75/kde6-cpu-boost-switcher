@@ -1,0 +1,21 @@
+{
+    "KPlugin": {
+        "Id": "io.github.szumak75.cpu-boost-switcher",
+        "Name": "CPU Boost Switcher",
+        "Description": "Monitor and toggle CPU boost state with cpupower.",
+        "Icon": "preferences-system-performance",
+        "Authors": [
+            {
+                "Name": "Jacek 'Szumak' Kotlarski",
+                "Email": "szumak@virthost.pl"
+            }
+        ],
+        "Category": "System Information",
+        "License": "GPL-3.0-or-later",
+        "Version": "0.1.0",
+        "Website": "https://example.com",
+        "EnabledByDefault": true
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "KPackageStructure": "Plasma/Applet"
+}

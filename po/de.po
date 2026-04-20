@@ -1,0 +1,199 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cpu-boost-switcher\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "CPU Boost Switcher"
+msgstr "CPU-Boost-Schalter"
+
+msgid "CPU Boost"
+msgstr "CPU-Boost"
+
+msgid "Reading CPU Boost state..."
+msgstr "CPU-Boost-Status wird gelesen..."
+
+msgid "The first refresh is in progress."
+msgstr "Die erste Aktualisierung läuft."
+
+msgid "cpupower is unavailable"
+msgstr "cpupower ist nicht verfügbar"
+
+msgid "The state cannot be changed because the last refresh did not complete successfully."
+msgstr "Der Status kann nicht geändert werden, weil die letzte Aktualisierung nicht erfolgreich abgeschlossen wurde."
+
+msgid "Resolve the diagnostic issue first and then refresh the state."
+msgstr "Behebe zuerst das Diagnoseproblem und aktualisiere dann den Status."
+
+msgid "CPU Boost is unsupported"
+msgstr "CPU-Boost wird nicht unterstützt"
+
+msgid "This system does not report support for switching CPU Boost."
+msgstr "Dieses System meldet keine Unterstützung für das Umschalten von CPU-Boost."
+
+msgid "Check whether the CPU driver and platform expose the 'boost state support' block."
+msgstr "Prüfe, ob der CPU-Treiber und die Plattform den Block 'boost state support' bereitstellen."
+
+msgid "Enabling CPU Boost..."
+msgstr "CPU-Boost wird aktiviert..."
+
+msgid "Disabling CPU Boost..."
+msgstr "CPU-Boost wird deaktiviert..."
+
+msgid "CPU Boost is enabled."
+msgstr "CPU-Boost ist aktiviert."
+
+msgid "CPU Boost is disabled."
+msgstr "CPU-Boost ist deaktiviert."
+
+msgid "State read successfully."
+msgstr "Status erfolgreich gelesen."
+
+msgid "The 'Supported' field returned 'no'."
+msgstr "Das Feld 'Supported' hat 'no' zurückgegeben."
+
+msgid "cpupower is missing"
+msgstr "cpupower fehlt"
+
+msgid "The system could not find the 'cpupower' command."
+msgstr "Das System konnte den Befehl 'cpupower' nicht finden."
+
+msgid "Install the package that provides 'cpupower' and ensure the command is available in PATH."
+msgstr "Installiere das Paket, das 'cpupower' bereitstellt, und stelle sicher, dass der Befehl im PATH verfügbar ist."
+
+msgid "sudo is missing"
+msgstr "sudo fehlt"
+
+msgid "The CPU Boost state cannot be changed because the 'sudo' command is unavailable."
+msgstr "Der CPU-Boost-Status kann nicht geändert werden, weil der Befehl 'sudo' nicht verfügbar ist."
+
+msgid "Install 'sudo' or replace the execution path with a helper based on polkit/pkexec."
+msgstr "Installiere 'sudo' oder ersetze den Ausführungspfad durch einen Helfer auf Basis von polkit/pkexec."
+
+msgid "sudo requires a password"
+msgstr "sudo erfordert ein Passwort"
+
+msgid "Changing the CPU Boost state requires an interactive sudo password prompt."
+msgstr "Das Ändern des CPU-Boost-Status erfordert eine interaktive sudo-Passwortabfrage."
+
+msgid "Configure passwordless sudo for this command or add a helper with graphical authentication in the future."
+msgstr "Konfiguriere passwortloses sudo für diesen Befehl oder füge künftig einen Helfer mit grafischer Authentifizierung hinzu."
+
+msgid "sudo permission denied"
+msgstr "sudo-Berechtigung verweigert"
+
+msgid "The current user is not allowed to run the command that changes the CPU Boost state."
+msgstr "Der aktuelle Benutzer darf den Befehl zum Ändern des CPU-Boost-Status nicht ausführen."
+
+msgid "Add an appropriate sudoers entry or switch to a different authorization mechanism."
+msgstr "Füge einen passenden sudoers-Eintrag hinzu oder wechsle zu einem anderen Autorisierungsmechanismus."
+
+msgid "Changing the state is not permitted"
+msgstr "Das Ändern des Status ist nicht erlaubt"
+
+msgid "The command failed with a permission error while trying to change CPU Boost."
+msgstr "Der Befehl ist beim Versuch, CPU-Boost zu ändern, mit einem Berechtigungsfehler fehlgeschlagen."
+
+msgid "Check whether 'sudo cpupower set --turbo-boost 0|1' works manually for the current user."
+msgstr "Prüfe, ob 'sudo cpupower set --turbo-boost 0|1' manuell für den aktuellen Benutzer funktioniert."
+
+msgid "Failed to change CPU Boost"
+msgstr "CPU-Boost konnte nicht geändert werden"
+
+msgid "The command that changes the CPU Boost state failed."
+msgstr "Der Befehl zum Ändern des CPU-Boost-Status ist fehlgeschlagen."
+
+msgid "Run 'sudo cpupower set --turbo-boost 0|1' manually and inspect the error details."
+msgstr "Führe 'sudo cpupower set --turbo-boost 0|1' manuell aus und prüfe die Fehlerdetails."
+
+msgid "cpupower returned no data"
+msgstr "cpupower lieferte keine Daten"
+
+msgid "The 'cpupower frequency-info' command returned no data."
+msgstr "Der Befehl 'cpupower frequency-info' lieferte keine Daten."
+
+msgid "Run 'cpupower frequency-info' manually and make sure it prints CPU frequency information."
+msgstr "Führe 'cpupower frequency-info' manuell aus und stelle sicher, dass CPU-Frequenzinformationen ausgegeben werden."
+
+msgid "Unknown cpupower output format"
+msgstr "Unbekanntes cpupower-Ausgabeformat"
+
+msgid "The applet could not recognize the 'boost state support' section in the command output."
+msgstr "Das Applet konnte den Abschnitt 'boost state support' in der Befehlsausgabe nicht erkennen."
+
+msgid "Run 'cpupower frequency-info' manually and compare its output with the expected structure."
+msgstr "Führe 'cpupower frequency-info' manuell aus und vergleiche die Ausgabe mit der erwarteten Struktur."
+
+msgid "Failed to read CPU Boost state"
+msgstr "CPU-Boost-Status konnte nicht gelesen werden"
+
+msgid "The 'cpupower frequency-info' command failed."
+msgstr "Der Befehl 'cpupower frequency-info' ist fehlgeschlagen."
+
+msgid "Check whether 'cpupower frequency-info' works correctly in a terminal."
+msgstr "Prüfe, ob 'cpupower frequency-info' im Terminal korrekt funktioniert."
+
+msgid "Supported:"
+msgstr "Unterstützt:"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "No data"
+msgstr "Keine Daten"
+
+msgid "Active:"
+msgstr "Aktiv:"
+
+msgid "Driver:"
+msgstr "Treiber:"
+
+msgid "Governors:"
+msgstr "Governors:"
+
+msgid "Limits:"
+msgstr "Grenzen:"
+
+msgid "Refresh interval:"
+msgstr "Aktualisierungsintervall:"
+
+msgid "Last refresh:"
+msgstr "Letzte Aktualisierung:"
+
+msgid "Not yet"
+msgstr "Noch nicht"
+
+msgid "No CPU Boost data available"
+msgstr "Keine CPU-Boost-Daten verfügbar"
+
+msgid "CPU Boost unsupported"
+msgstr "CPU-Boost nicht unterstützt"
+
+msgid "CPU Boost enabled"
+msgstr "CPU-Boost aktiviert"
+
+msgid "CPU Boost disabled"
+msgstr "CPU-Boost deaktiviert"
+
+msgid "Refresh"
+msgstr "Aktualisieren"
+
+msgid "Show diagnostics"
+msgstr "Diagnose anzeigen"
+
+msgid "Diagnostics"
+msgstr "Diagnose"
+
+msgid "Recommendation"
+msgstr "Empfehlung"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Refresh interval (s):"
+msgstr "Aktualisierungsintervall (s):"

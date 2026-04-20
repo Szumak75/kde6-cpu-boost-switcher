@@ -1,0 +1,23 @@
+# Build directories
+/build/
+/cmake-build-*/
+
+# CMake generated files
+/CMakeCache.txt
+/CMakeFiles/
+/Makefile
+/cmake_install.cmake
+/install_manifest.txt
+/compile_commands.json
+
+# Generated translation binaries
+/package/contents/locale/*/LC_MESSAGES/*.mo
+
+# Editor / OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
