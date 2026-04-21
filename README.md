@@ -4,9 +4,7 @@
 
 When startup restore is enabled, the project can also persist the selected boost/governor state to a root-owned file and restore it during boot through a system `systemd` unit. This avoids interactive password prompts during login and reboot.
 
-The applet UI now uses English strings consistently, which avoids mixed-language output and provides a cleaner baseline for future localization work.
-
-The project ships localization scaffolding for multiple languages. At runtime the plasmoid resolves user-facing strings from the current system locale via a lightweight in-package translation helper, and the repository also includes `po/` sources plus a helper script for building `.mo` catalogs for future KDE/Gettext integration.
+The project ships localization scaffolding for multiple languages. At runtime the plasmoid resolves user-facing strings from the current system locale via an in-package translation helper, and the repository also includes `po/` sources plus a helper script for rebuilding the packaged `.mo` catalogs.
 
 ## Features
 
@@ -96,12 +94,14 @@ sudo zypper install polkit
 
 ### Build
 
-For a system-wide deployment, configure the build with `/usr` as the install prefix:
+For a working setup, configure the build with `/usr` as the install prefix:
 
 ```bash
 cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr
 cmake --build build -j$(nproc)
 ```
+
+This matters because the project defaults `CMAKE_INSTALL_PREFIX` to `~/.local` when the prefix is omitted. That default is convenient for local plasmoid iteration, but it is not sufficient for the privileged helper, D-Bus activation, Polkit policy, and boot-time restore integration. If an existing build directory was configured with the wrong prefix, re-run CMake with `-DCMAKE_INSTALL_PREFIX=/usr` or use a fresh build directory.
 
 ### Install
 
@@ -130,14 +130,6 @@ sudo systemctl start cpuboost-restore.service
 ```
 
 This unit is defined as `Type=oneshot`, so after a successful run `systemctl status` will normally show it as `inactive (dead)`. That is the expected state, not a failure.
-
-If you prefer a fully system-wide deployment, you can also install both components under `/usr`:
-
-```bash
-cmake -B build-system -S . -DCMAKE_INSTALL_PREFIX=/usr
-cmake --build build-system -j$(nproc)
-sudo cmake --install build-system
-```
 
 After installation, restart Plasma Shell if the widget does not refresh automatically:
 
@@ -187,6 +179,8 @@ To rebuild `.mo` files after editing the `.po` sources:
 ./scripts/build-translations.sh
 ```
 
+The helper script uses `msgfmt`, so translation rebuilds require GNU gettext tools to be installed.
+
 ## Troubleshooting
 
 If the plasmoid reports a diagnostic error:
@@ -200,7 +194,9 @@ If the plasmoid reports a diagnostic error:
      - `/sys/devices/system/cpu/cpufreq/policy*/cpb`
 2. Ensure the plasmoid package itself is installed in the active Plasma data path.
 3. Ensure the plasmoid install includes `contents/bin/cpuboost-kauth-client`.
-4. Ensure the helper is installed at `/usr/lib/kauth/cpuboost-kauth-helper`.
+4. Ensure the helper is installed in the KF6 KAuth helper directory. On the current build configuration that resolves to:
+   - `/usr/libexec/kf6/kauth/cpuboost-kauth-helper`
+   - on some distributions the exact `libexec` prefix may differ, but it must match the `Exec=` path in `io.github.szumak75.kde6cpuboostswitcher.helper.service`
 5. Ensure these system files exist:
    - `/usr/share/dbus-1/system-services/io.github.szumak75.kde6cpuboostswitcher.helper.service`
    - `/usr/share/dbus-1/system.d/io.github.szumak75.kde6cpuboostswitcher.helper.conf`
