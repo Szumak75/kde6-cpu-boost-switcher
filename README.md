@@ -103,6 +103,12 @@ cmake --build build -j$(nproc)
 
 This matters because the project defaults `CMAKE_INSTALL_PREFIX` to `~/.local` when the prefix is omitted. That default is convenient for local plasmoid iteration, but it is not sufficient for the privileged helper, D-Bus activation, Polkit policy, and boot-time restore integration. If an existing build directory was configured with the wrong prefix, re-run CMake with `-DCMAKE_INSTALL_PREFIX=/usr` or use a fresh build directory.
 
+If you prefer a shorter command sequence, the repository also provides a top-level `Makefile` that uses the same defaults:
+
+```bash
+make build
+```
+
 ### Install
 
 This project has a mandatory system-wide part:
@@ -115,6 +121,32 @@ Install both components system-wide:
 ```bash
 sudo cmake --install build --component Plasmoid
 sudo cmake --install build --component KAuthSystem
+```
+
+The equivalent `Makefile` targets are:
+
+```bash
+make install
+```
+
+Useful shortcuts:
+
+- `make install-plasmoid` – install only the plasmoid package and bundled client
+- `make install-system` – install only the privileged helper, D-Bus, Polkit, and systemd files
+- `make reinstall` – install everything and restart Plasma Shell
+- `make show-plasma-tools` – show which `kquitapp*`/`kstart*` commands were detected for Plasma restart
+- `make enable-restore-service` – enable boot-time restore
+- `make start-restore-service` – run the restore service once
+
+The `restart-plasma` target auto-detects the available restart commands in `PATH`. In the KDE6 fork it currently tries:
+
+- stop: `kquitapp6`, `kquitapp`
+- start: `kstart6`, `kstart`
+
+All defaults can be overridden, for example:
+
+```bash
+make BUILD_DIR=build-debug PREFIX=/usr CONFIGURE_ARGS=-DCMAKE_BUILD_TYPE=Debug build
 ```
 
 Enable the boot-time restore service if you want saved settings to be applied automatically during system startup:
@@ -142,6 +174,8 @@ or
 ```bash
 kquitapp6 plasmashell && kstart plasmashell
 ```
+
+If your distribution ships different command names, use the matching local equivalents or rely on `make restart-plasma`, which auto-detects the supported command pair.
 
 ## Configuration
 
