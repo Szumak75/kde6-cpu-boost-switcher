@@ -2,7 +2,7 @@
     "KPlugin": {
         "Id": "io.github.szumak75.cpu-boost-switcher",
         "Name": "CPU Boost Switcher",
-        "Description": "Monitor and toggle CPU boost state with cpupower.",
+        "Description": "Monitor and switch CPU Boost and governors through sysfs and KAuth.",
         "Icon": "preferences-system-performance",
         "Authors": [
             {
@@ -12,7 +12,7 @@
         ],
         "Category": "System Information",
         "License": "GPL-3.0-or-later",
-        "Version": "0.1.13",
+        "Version": "0.1.15",
         "Website": "https://github.com/Szumak75/kde6-cpu-boost-switcher",
         "EnabledByDefault": true
     },

@@ -8,6 +8,7 @@ KCM.SimpleKCM {
     id: root
 
     property alias cfg_refreshIntervalSeconds: refreshInterval.value
+    property alias cfg_restoreSavedStateOnStartup: restoreSavedStateOnStartup.checked
     readonly property string localeName: Qt.locale().name
 
     implicitWidth: Kirigami.Units.gridUnit * 18
@@ -23,6 +24,11 @@ KCM.SimpleKCM {
             stepSize: 1
             editable: true
             Kirigami.FormData.label: I18n.tr(root.localeName, "Refresh interval (s):")
+        }
+
+        QQC2.CheckBox {
+            id: restoreSavedStateOnStartup
+            text: I18n.tr(root.localeName, "Restore saved settings on startup")
         }
     }
 }

@@ -1,0 +1,11 @@
+[Unit]
+Description=Restore CPU Boost Switcher startup settings
+ConditionPathExists=/var/lib/kde6-cpu-boost-switcher/state.ini
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=@RESTORE_TOOL_SYSTEM_PATH@
+
+[Install]
+WantedBy=multi-user.target

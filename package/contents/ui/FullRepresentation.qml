@@ -1,6 +1,6 @@
 import QtQml 2.15
 import QtQuick 2.15
-import QtQuick.Controls 2.15 as QQC2
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts 1.15
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.components 3.0 as PlasmaComponents3
@@ -80,6 +80,13 @@ Item {
                 elide: Text.ElideRight
             }
 
+            PlasmaComponents3.Label { text: tr("Boost control:") }
+            PlasmaComponents3.Label {
+                text: fullRoot.controller.boostControlDisplayText()
+                Layout.fillWidth: true
+                elide: Text.ElideRight
+            }
+
             PlasmaComponents3.Label { text: tr("Governors:") }
             PlasmaComponents3.Label {
                 text: fullRoot.controller.availableGovernors !== "" ? fullRoot.controller.availableGovernors : "—"
@@ -96,6 +103,7 @@ Item {
                 currentIndex: fullRoot.controller.availableGovernorsModel.length > 0
                     ? Math.max(0, fullRoot.controller.availableGovernorsModel.indexOf(fullRoot.controller.currentGovernor))
                     : -1
+                displayText: fullRoot.controller.currentGovernorDisplayText()
 
                 onActivated: function(index) {
                     const governor = governorComboBox.textAt(index)
@@ -152,6 +160,20 @@ Item {
             target: boostSwitch
             property: "checked"
             value: fullRoot.controller.boostActive
+        }
+
+        QQC2.Switch {
+            id: restoreOnStartupSwitch
+
+            text: tr("Restore saved settings on startup")
+            checked: fullRoot.controller.restoreSavedStateOnStartup
+            enabled: !fullRoot.controller.busy
+
+            onToggled: {
+                if (checked !== fullRoot.controller.restoreSavedStateOnStartup) {
+                    fullRoot.controller.setRestoreSavedStateOnStartup(checked)
+                }
+            }
         }
 
         RowLayout {

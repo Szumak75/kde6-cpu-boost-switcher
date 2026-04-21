@@ -14,5 +14,8 @@
         <entry name="desiredGovernor" type="String">
             <default></default>
         </entry>
+        <entry name="restoreSavedStateOnStartup" type="Bool">
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>

@@ -6,194 +6,296 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "CPU Boost Switcher"
-msgstr "Przełącznik CPU Boost"
+msgid "Active:"
+msgstr "Aktywne:"
 
 msgid "CPU Boost"
 msgstr "CPU Boost"
 
-msgid "Reading CPU Boost state..."
-msgstr "Odczytywanie stanu CPU Boost..."
+msgid "CPU Boost Switcher"
+msgstr "Przełącznik CPU Boost"
 
-msgid "The first refresh is in progress."
-msgstr "Trwa pierwsze odświeżenie."
-
-msgid "cpupower is unavailable"
-msgstr "cpupower jest niedostępny"
-
-msgid "The state cannot be changed because the last refresh did not complete successfully."
-msgstr "Nie można zmienić stanu, ponieważ ostatnie odświeżenie nie zakończyło się powodzeniem."
-
-msgid "Resolve the diagnostic issue first and then refresh the state."
-msgstr "Najpierw rozwiąż problem diagnostyczny, a następnie odśwież stan."
-
-msgid "CPU Boost is unsupported"
-msgstr "CPU Boost nie jest obsługiwany"
-
-msgid "This system does not report support for switching CPU Boost."
-msgstr "Ten system nie zgłasza obsługi przełączania CPU Boost."
-
-msgid "Check whether the CPU driver and platform expose the 'boost state support' block."
-msgstr "Sprawdź, czy sterownik CPU i platforma udostępniają blok 'boost state support'."
-
-msgid "Enabling CPU Boost..."
-msgstr "Włączanie CPU Boost..."
-
-msgid "Disabling CPU Boost..."
-msgstr "Wyłączanie CPU Boost..."
-
-msgid "CPU Boost is enabled."
-msgstr "CPU Boost jest włączony."
-
-msgid "CPU Boost is disabled."
-msgstr "CPU Boost jest wyłączony."
-
-msgid "State read successfully."
-msgstr "Stan został odczytany poprawnie."
-
-msgid "The 'Supported' field returned 'no'."
-msgstr "Pole 'Supported' zwróciło wartość 'no'."
-
-msgid "cpupower is missing"
-msgstr "Brakuje programu cpupower"
-
-msgid "The system could not find the 'cpupower' command."
-msgstr "System nie znalazł polecenia 'cpupower'."
-
-msgid "Install the package that provides 'cpupower' and ensure the command is available in PATH."
-msgstr "Zainstaluj pakiet udostępniający 'cpupower' i upewnij się, że polecenie jest dostępne w PATH."
-
-msgid "sudo is missing"
-msgstr "Brakuje programu sudo"
-
-msgid "The CPU Boost state cannot be changed because the 'sudo' command is unavailable."
-msgstr "Nie można zmienić stanu CPU Boost, ponieważ polecenie 'sudo' jest niedostępne."
-
-msgid "Install 'sudo' or replace the execution path with a helper based on polkit/pkexec."
-msgstr "Zainstaluj 'sudo' albo zastąp ścieżkę wykonania helperem opartym o polkit/pkexec."
-
-msgid "sudo requires a password"
-msgstr "sudo wymaga hasła"
-
-msgid "Changing the CPU Boost state requires an interactive sudo password prompt."
-msgstr "Zmiana stanu CPU Boost wymaga interaktywnego podania hasła sudo."
-
-msgid "Configure passwordless sudo for this command or add a helper with graphical authentication in the future."
-msgstr "Skonfiguruj sudo bez hasła dla tego polecenia albo w przyszłości dodaj helper z autoryzacją graficzną."
-
-msgid "sudo permission denied"
-msgstr "Odmowa uprawnień sudo"
-
-msgid "The current user is not allowed to run the command that changes the CPU Boost state."
-msgstr "Bieżący użytkownik nie ma uprawnień do uruchomienia polecenia zmieniającego stan CPU Boost."
-
-msgid "Add an appropriate sudoers entry or switch to a different authorization mechanism."
-msgstr "Dodaj odpowiedni wpis do sudoers albo przejdź na inny mechanizm autoryzacji."
-
-msgid "Changing the state is not permitted"
-msgstr "Zmiana stanu jest niedozwolona"
-
-msgid "The command failed with a permission error while trying to change CPU Boost."
-msgstr "Polecenie zakończyło się błędem uprawnień podczas próby zmiany CPU Boost."
-
-msgid "Check whether 'sudo cpupower set --turbo-boost 0|1' works manually for the current user."
-msgstr "Sprawdź, czy 'sudo cpupower set --turbo-boost 0|1' działa ręcznie dla bieżącego użytkownika."
-
-msgid "Failed to change CPU Boost"
-msgstr "Nie udało się zmienić CPU Boost"
-
-msgid "The command that changes the CPU Boost state failed."
-msgstr "Polecenie zmieniające stan CPU Boost zakończyło się błędem."
-
-msgid "Run 'sudo cpupower set --turbo-boost 0|1' manually and inspect the error details."
-msgstr "Uruchom ręcznie 'sudo cpupower set --turbo-boost 0|1' i sprawdź szczegóły błędu."
-
-msgid "cpupower returned no data"
-msgstr "cpupower nie zwrócił danych"
-
-msgid "The 'cpupower frequency-info' command returned no data."
-msgstr "Polecenie 'cpupower frequency-info' nie zwróciło danych."
-
-msgid "Run 'cpupower frequency-info' manually and make sure it prints CPU frequency information."
-msgstr "Uruchom ręcznie 'cpupower frequency-info' i upewnij się, że wypisuje informacje o częstotliwości CPU."
-
-msgid "Unknown cpupower output format"
-msgstr "Nieznany format wyjścia cpupower"
-
-msgid "The applet could not recognize the 'boost state support' section in the command output."
-msgstr "Aplet nie rozpoznał sekcji 'boost state support' w wyjściu polecenia."
-
-msgid "Run 'cpupower frequency-info' manually and compare its output with the expected structure."
-msgstr "Uruchom ręcznie 'cpupower frequency-info' i porównaj wynik z oczekiwaną strukturą."
-
-msgid "Failed to read CPU Boost state"
-msgstr "Nie udało się odczytać stanu CPU Boost"
-
-msgid "The 'cpupower frequency-info' command failed."
-msgstr "Polecenie 'cpupower frequency-info' zakończyło się błędem."
-
-msgid "Check whether 'cpupower frequency-info' works correctly in a terminal."
-msgstr "Sprawdź, czy 'cpupower frequency-info' działa poprawnie w terminalu."
-
-msgid "Supported:"
-msgstr "Obsługiwane:"
-
-msgid "Yes"
-msgstr "Tak"
-
-msgid "No"
-msgstr "Nie"
-
-msgid "No data"
-msgstr "Brak danych"
-
-msgid "Active:"
-msgstr "Aktywne:"
-
-msgid "Driver:"
-msgstr "Sterownik:"
-
-msgid "Governors:"
-msgstr "Governory:"
-
-msgid "Limits:"
-msgstr "Limity:"
-
-msgid "Refresh interval:"
-msgstr "Interwał odświeżania:"
-
-msgid "Last refresh:"
-msgstr "Ostatnie odświeżenie:"
-
-msgid "Not yet"
-msgstr "Jeszcze nie"
-
-msgid "No CPU Boost data available"
-msgstr "Brak danych o CPU Boost"
-
-msgid "CPU Boost unsupported"
-msgstr "CPU Boost nieobsługiwany"
-
-msgid "CPU Boost enabled"
-msgstr "CPU Boost włączony"
+msgid "CPU Boost control is unsupported"
+msgstr "Sterowanie CPU Boost nie jest obsługiwane"
 
 msgid "CPU Boost disabled"
 msgstr "CPU Boost wyłączony"
 
-msgid "Refresh"
-msgstr "Odśwież"
+msgid "CPU Boost enabled"
+msgstr "CPU Boost włączony"
 
-msgid "Show diagnostics"
-msgstr "Pokaż diagnostykę"
+msgid "CPU Boost is disabled."
+msgstr "CPU Boost jest wyłączony."
 
-msgid "Diagnostics"
-msgstr "Diagnostyka"
+msgid "CPU Boost is enabled."
+msgstr "CPU Boost jest włączony."
 
-msgid "Recommendation"
-msgstr "Rekomendacja"
+msgid "CPU Boost is unsupported"
+msgstr "CPU Boost nie jest obsługiwany"
+
+msgid "CPU Boost is unsupported."
+msgstr "CPU Boost nie jest obsługiwany."
+
+msgid "CPU Boost unsupported"
+msgstr "CPU Boost nieobsługiwany"
+
+msgid "CPU frequency sysfs is unavailable"
+msgstr "Sysfs częstotliwości CPU jest niedostępny"
+
+msgid "Changing governor to %1..."
+msgstr "Zmiana governora na %1..."
+
+msgid "Changing the state is not permitted"
+msgstr "Zmiana stanu jest niedozwolona"
+
+msgid "Check file permissions under /sys/devices/system/cpu and verify the KAuth helper is installed correctly."
+msgstr "Sprawdź uprawnienia plików w /sys/devices/system/cpu i zweryfikuj poprawność instalacji helpera KAuth."
+
+msgid "Check the diagnostic details and verify the current CPU driver exposes cpufreq sysfs controls."
+msgstr "Sprawdź szczegóły diagnostyczne i zweryfikuj, czy bieżący sterownik CPU udostępnia kontrolki cpufreq w sysfs."
+
+msgid "Check the diagnostic details and verify the installed client binary matches the current plasmoid version."
+msgstr "Sprawdź szczegóły diagnostyczne i zweryfikuj, czy zainstalowane binarium klienta odpowiada bieżącej wersji plasmoidu."
+
+msgid "Check whether cpufreq is enabled for this kernel and CPU driver."
+msgstr "Sprawdź, czy cpufreq jest włączony dla tego jądra i sterownika CPU."
+
+msgid "Check whether the active CPU driver exposes boost control through sysfs."
+msgstr "Sprawdź, czy aktywny sterownik CPU udostępnia kontrolę boost przez sysfs."
+
+msgid "Check whether the current driver supports governor changes on this platform."
+msgstr "Sprawdź, czy bieżący sterownik obsługuje zmianę governora na tej platformie."
+
+msgid "Check whether the helper is installed system-wide and whether Polkit can prompt for authentication."
+msgstr "Sprawdź, czy helper jest zainstalowany systemowo i czy Polkit może wyświetlić monit o uwierzytelnienie."
 
 msgid "Details"
 msgstr "Szczegóły"
 
-msgid "Refresh interval (s):"
-msgstr "Interwał odświeżania (s):"
+msgid "Diagnostics"
+msgstr "Diagnostyka"
+
+msgid "Disabling startup restore..."
+msgstr "Wyłączanie przywracania przy starcie..."
+
+msgid "Disabling CPU Boost..."
+msgstr "Wyłączanie CPU Boost..."
+
+msgid "Driver:"
+msgstr "Sterownik:"
+
+msgid "Boost control:"
+msgstr "Sterowanie boost:"
+
+msgid "Enabling startup restore..."
+msgstr "Włączanie przywracania przy starcie..."
+
+msgid "Enabling CPU Boost..."
+msgstr "Włączanie CPU Boost..."
+
+msgid "Failed to change CPU Boost"
+msgstr "Nie udało się zmienić CPU Boost"
+
+msgid "Failed to change governor"
+msgstr "Nie udało się zmienić governora"
+
+msgid "Failed to read CPU Boost state"
+msgstr "Nie udało się odczytać stanu CPU Boost"
+
+msgid "Governor control is unavailable"
+msgstr "Sterowanie governorem jest niedostępne"
+
+msgid "Governor:"
+msgstr "Governor:"
+
+msgid "Governors:"
+msgstr "Governory:"
+
+msgid "Inspect the diagnostic details and verify the driver-specific sysfs boost controls on this platform."
+msgstr "Sprawdź szczegóły diagnostyczne i zweryfikuj specyficzne dla sterownika kontrolki boost w sysfs na tej platformie."
+
+msgid "Inspect the diagnostic details and verify the driver-specific sysfs governor controls on this platform."
+msgstr "Sprawdź szczegóły diagnostyczne i zweryfikuj specyficzne dla sterownika kontrolki governora w sysfs na tej platformie."
+
+msgid "Install the KAuth helper, D-Bus service, and policy files system-wide, then restart the Plasma session."
+msgstr "Zainstaluj helper KAuth, usługę D-Bus i pliki polityk systemowo, a następnie uruchom ponownie sesję Plasma."
+
+msgid "Invalid governor selection"
+msgstr "Nieprawidłowy wybór governora"
+
+msgid "Invalid privileged command arguments"
+msgstr "Nieprawidłowe argumenty uprzywilejowanego polecenia"
+
+msgid "Invalid state data"
+msgstr "Nieprawidłowe dane stanu"
+
+msgid "KAuth authorization failed"
+msgstr "Autoryzacja KAuth nie powiodła się"
+
+msgid "KAuth is not configured"
+msgstr "KAuth nie jest skonfigurowany"
+
+msgid "Last refresh:"
+msgstr "Ostatnie odświeżenie:"
+
+msgid "Leave the saved value unchanged or move the plasmoid to hardware that supports CPU Boost control."
+msgstr "Pozostaw zapisaną wartość bez zmian albo użyj plasmoidu na sprzęcie obsługującym kontrolę CPU Boost."
+
+msgid "Limits:"
+msgstr "Limity:"
+
+msgid "No"
+msgstr "Nie"
+
+msgid "No CPU Boost data available"
+msgstr "Brak danych o CPU Boost"
+
+msgid "No data"
+msgstr "Brak danych"
+
+msgid "Mixed"
+msgstr "Mieszane"
+
+msgid "Not yet"
+msgstr "Jeszcze nie"
+
+msgid "Reading CPU Boost state..."
+msgstr "Odczytywanie stanu CPU Boost..."
+
+msgid "Recommendation"
+msgstr "Rekomendacja"
+
+msgid "Refresh"
+msgstr "Odśwież"
+
+msgid "Refresh interval:"
+msgstr "Interwał odświeżania:"
+
+msgid "Restore saved settings on startup"
+msgstr "Przywracaj zapisane ustawienia przy starcie"
+
+msgid "Restoring saved settings..."
+msgstr "Przywracanie zapisanych ustawień..."
+
+msgid "Refresh the state and choose one of the governors reported by the current CPU driver."
+msgstr "Odśwież stan i wybierz jeden z governorów zgłoszonych przez bieżący sterownik CPU."
+
+msgid "Refresh the state and try again. If the error persists, review helper argument validation."
+msgstr "Odśwież stan i spróbuj ponownie. Jeśli błąd będzie się powtarzał, sprawdź walidację argumentów helpera."
+
+msgid "Reinstall the KAuth client and verify the CPU sysfs hierarchy is available."
+msgstr "Zainstaluj ponownie klienta KAuth i sprawdź, czy hierarchia sysfs dla CPU jest dostępna."
+
+msgid "Reinstall the project with the KAuth client enabled and make sure the helper binaries are installed."
+msgstr "Zainstaluj projekt ponownie z włączonym klientem KAuth i upewnij się, że binaria helpera są zainstalowane."
+
+msgid "Resolve the diagnostic issue first and then refresh the state."
+msgstr "Najpierw rozwiąż problem diagnostyczny, a następnie odśwież stan."
+
+msgid "Failed to update startup restore state"
+msgstr "Nie udało się zaktualizować stanu przywracania przy starcie"
+
+msgid "Saved CPU Boost state cannot be applied"
+msgstr "Nie można zastosować zapisanego stanu CPU Boost"
+
+msgid "Saved governor is unavailable"
+msgstr "Zapisany governor jest niedostępny"
+
+msgid "Select one of the available governors or update the saved setting."
+msgstr "Wybierz jeden z dostępnych governorów albo zaktualizuj zapisane ustawienie."
+
+msgid "Show diagnostics"
+msgstr "Pokaż diagnostykę"
+
+msgid "State control is unavailable"
+msgstr "Sterowanie stanem jest niedostępne"
+
+msgid "State read successfully."
+msgstr "Stan został odczytany poprawnie."
+
+msgid "State reader returned no data"
+msgstr "Odczyt stanu nie zwrócił danych"
+
+msgid "Supported:"
+msgstr "Obsługiwane:"
+
+msgid "The 'Supported' field returned 'no'."
+msgstr "Pole 'Supported' zwróciło wartość 'no'."
+
+msgid "The KAuth action could not be created for this operation."
+msgstr "Nie udało się utworzyć akcji KAuth dla tej operacji."
+
+msgid "The KAuth client is missing"
+msgstr "Brakuje klienta KAuth"
+
+msgid "The KAuth client or helper rejected the requested operation arguments."
+msgstr "Klient KAuth lub helper odrzucił argumenty żądanej operacji."
+
+msgid "The active CPU driver does not expose a writable sysfs control for CPU Boost."
+msgstr "Aktywny sterownik CPU nie udostępnia zapisywalnej kontroli CPU Boost przez sysfs."
+
+msgid "The active CPU driver does not expose writable governor controls through sysfs."
+msgstr "Aktywny sterownik CPU nie udostępnia zapisywalnej kontroli governora przez sysfs."
+
+msgid "The applet could not parse the state data returned by the local helper client."
+msgstr "Aplet nie mógł przetworzyć danych stanu zwróconych przez lokalnego klienta helpera."
+
+msgid "The applet could not read CPU state from sysfs."
+msgstr "Aplet nie mógł odczytać stanu CPU z sysfs."
+
+msgid "The first refresh is in progress."
+msgstr "Trwa pierwsze odświeżenie."
+
+msgid "The helper failed with a permission error while trying to change the CPU state."
+msgstr "Helper zakończył się błędem uprawnień podczas próby zmiany stanu CPU."
+
+msgid "The installed plasmoid does not include the KAuth client executable."
+msgstr "Zainstalowany plasmoid nie zawiera pliku wykonywalnego klienta KAuth."
+
+msgid "The operation that changes the CPU Boost state failed."
+msgstr "Operacja zmieniająca stan CPU Boost zakończyła się błędem."
+
+msgid "The operation that changes the CPU governor failed."
+msgstr "Operacja zmieniająca governor CPU zakończyła się błędem."
+
+msgid "The operation that updates the startup restore state failed."
+msgstr "Operacja aktualizująca stan przywracania przy starcie zakończyła się błędem."
+
+msgid "The privileged KAuth action did not complete successfully."
+msgstr "Uprzywilejowana akcja KAuth nie zakończyła się powodzeniem."
+
+msgid "The saved CPU Boost state cannot be restored because CPU Boost is not supported on this system."
+msgstr "Nie można przywrócić zapisanego stanu CPU Boost, ponieważ ten system nie obsługuje CPU Boost."
+
+msgid "The saved governor '%1' is not available on this system."
+msgstr "Zapisany governor '%1' nie jest dostępny w tym systemie."
+
+msgid "The selected governor is not available on this system."
+msgstr "Wybrany governor nie jest dostępny w tym systemie."
+
+msgid "The state cannot be changed because the last refresh did not complete successfully."
+msgstr "Nie można zmienić stanu, ponieważ ostatnie odświeżenie nie zakończyło się powodzeniem."
+
+msgid "The startup restore setting cannot be changed because the current CPU state is unavailable."
+msgstr "Nie można zmienić ustawienia przywracania przy starcie, ponieważ bieżący stan CPU jest niedostępny."
+
+msgid "The state reader returned no data."
+msgstr "Odczyt stanu nie zwrócił danych."
+
+msgid "The system does not expose the expected cpufreq policy directories."
+msgstr "System nie udostępnia oczekiwanych katalogów polityk cpufreq."
+
+msgid "This system does not report support for switching CPU Boost."
+msgstr "Ten system nie zgłasza obsługi przełączania CPU Boost."
+
+msgid "Use a driver or firmware configuration that exposes boost control through sysfs."
+msgstr "Użyj sterownika lub konfiguracji firmware, która udostępnia kontrolę boost przez sysfs."
+
+msgid "Refresh the state successfully and then try again."
+msgstr "Najpierw pomyślnie odśwież stan, a następnie spróbuj ponownie."
+
+msgid "Inspect the diagnostic details and verify the helper can write the persistent startup state."
+msgstr "Sprawdź szczegóły diagnostyczne i zweryfikuj, czy helper może zapisać trwały stan przywracania przy starcie."
+
+msgid "Yes"
+msgstr "Tak"

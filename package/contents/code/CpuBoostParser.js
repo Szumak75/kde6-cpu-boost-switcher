@@ -1,17 +1,20 @@
 .pragma library
 
-function parseFrequencyInfo(rawText) {
+function parseStateJson(rawText) {
     const result = {
         ok: false,
         driver: "",
+        boostControl: "",
         availableGovernors: "",
+        availableGovernorsModel: [],
         hardwareLimits: "",
         currentPolicy: "",
         currentGovernor: "",
+        mixedGovernor: false,
+        policyCount: 0,
         boostSupported: false,
         boostActive: false,
-        errorCode: "",
-        errorMessage: ""
+        errorCode: ""
     }
 
     if (!rawText || rawText.trim() === "") {
@@ -19,82 +22,31 @@ function parseFrequencyInfo(rawText) {
         return result
     }
 
-    const lines = rawText.split(/\r?\n/)
-    let inBoostSection = false
-    let foundSupported = false
-    let foundActive = false
-    let collectingPolicy = false
-    let policyLines = []
-
-    for (let index = 0; index < lines.length; ++index) {
-        const line = lines[index]
-        const trimmed = line.trim()
-
-        if (/^driver:\s*/.test(trimmed)) {
-            result.driver = trimmed.replace(/^driver:\s*/, "")
-        } else if (/^available cpufreq governors:\s*/.test(trimmed)) {
-            result.availableGovernors = trimmed.replace(/^available cpufreq governors:\s*/, "")
-        } else if (/^hardware limits:\s*/.test(trimmed)) {
-            result.hardwareLimits = trimmed.replace(/^hardware limits:\s*/, "")
-        }
-
-        if (/^current policy:\s*/.test(trimmed)) {
-            collectingPolicy = true
-            policyLines = [trimmed.replace(/^current policy:\s*/, "")]
-            continue
-        }
-
-        if (collectingPolicy) {
-            if (/^\s{10,}\S/.test(line)) {
-                policyLines.push(trimmed)
-                continue
-            }
-
-            result.currentPolicy = policyLines.join(" ")
-            collectingPolicy = false
-        }
-
-        if (trimmed === "boost state support:") {
-            inBoostSection = true
-            continue
-        }
-
-        if (inBoostSection) {
-            const supportedMatch = trimmed.match(/^Supported:\s*(yes|no)$/i)
-            if (supportedMatch) {
-                result.boostSupported = supportedMatch[1].toLowerCase() === "yes"
-                foundSupported = true
-                continue
-            }
-
-            const activeMatch = trimmed.match(/^Active:\s*(yes|no)$/i)
-            if (activeMatch) {
-                result.boostActive = activeMatch[1].toLowerCase() === "yes"
-                foundActive = true
-                continue
-            }
-
-            if (/^[A-Za-z].*:\s*$/.test(trimmed)) {
-                inBoostSection = false
-            }
-        }
+    let parsed
+    try {
+        parsed = JSON.parse(rawText)
+    } catch (error) {
+        result.errorCode = "invalid_state_json"
+        return result
     }
 
-    if (collectingPolicy && policyLines.length > 0) {
-        result.currentPolicy = policyLines.join(" ")
-    }
-
-    const governorMatch = result.currentPolicy.match(/The governor "([^"]+)"/)
-    if (governorMatch) {
-        result.currentGovernor = governorMatch[1]
-    }
-
-    if (!foundSupported || !foundActive) {
-        result.errorCode = "missing_boost_block"
+    if (!parsed || parsed.ok !== true) {
+        result.errorCode = parsed && parsed.errorCode ? parsed.errorCode : "state_read_failed"
         return result
     }
 
     result.ok = true
+    result.driver = parsed.driver || ""
+    result.boostControl = parsed.boostControl || ""
+    result.availableGovernors = parsed.availableGovernors || ""
+    result.availableGovernorsModel = parsed.availableGovernorsModel || []
+    result.hardwareLimits = parsed.hardwareLimits || ""
+    result.currentPolicy = parsed.currentPolicy || ""
+    result.currentGovernor = parsed.currentGovernor || ""
+    result.mixedGovernor = parsed.mixedGovernor === true
+    result.policyCount = parsed.policyCount || 0
+    result.boostSupported = parsed.boostSupported === true
+    result.boostActive = parsed.boostActive === true
     return result
 }
 
@@ -102,37 +54,65 @@ function diagnoseCommand(kind, exitCode, stdout, stderr) {
     const details = [stdout.trim(), stderr.trim()].filter(Boolean).join("\n")
     const combined = details.toLowerCase()
 
-    if (details.indexOf("CPUBOOST_ERROR:missing_cpupower") !== -1) {
+    if (details.indexOf("CPUBOOST_ERROR:missing_kauth_client") !== -1) {
         return {
             details: details,
-            code: "missing_cpupower"
+            code: "missing_kauth_client"
         }
     }
 
-    if (details.indexOf("CPUBOOST_ERROR:missing_sudo") !== -1) {
+    if (details.indexOf("CPUBOOST_ERROR:kauth_not_configured") !== -1) {
         return {
             details: details,
-            code: "missing_sudo"
+            code: "kauth_not_configured"
         }
     }
 
-    if ((kind === "set" || kind === "governor") && (combined.indexOf("a password is required") !== -1 || combined.indexOf("no password was provided") !== -1)) {
+    if (details.indexOf("CPUBOOST_ERROR:kauth_action_failed") !== -1) {
         return {
             details: details,
-            code: "sudo_password_required"
+            code: "kauth_action_failed"
         }
     }
 
-    if ((kind === "set" || kind === "governor") && (combined.indexOf("not in the sudoers file") !== -1
-        || combined.indexOf("is not allowed to execute") !== -1
-        || combined.indexOf("is not allowed to run sudo") !== -1)) {
+    if (details.indexOf("CPUBOOST_ERROR:invalid_arguments") !== -1) {
         return {
             details: details,
-            code: "sudo_not_allowed"
+            code: "invalid_arguments"
         }
     }
 
-    if ((kind === "set" || kind === "governor") && (combined.indexOf("permission denied") !== -1 || combined.indexOf("operation not permitted") !== -1)) {
+    if (details.indexOf("CPUBOOST_ERROR:unsupported_boost_control") !== -1) {
+        return {
+            details: details,
+            code: "unsupported_boost_control"
+        }
+    }
+
+    if (details.indexOf("CPUBOOST_ERROR:missing_governor_control") !== -1) {
+        return {
+            details: details,
+            code: "missing_governor_control"
+        }
+    }
+
+    if (kind === "refresh") {
+        if (details.indexOf("\"errorCode\":\"missing_cpufreq\"") !== -1) {
+            return {
+                details: details,
+                code: "missing_cpufreq"
+            }
+        }
+
+        if (details.indexOf("\"errorCode\":\"empty_output\"") !== -1) {
+            return {
+                details: details,
+                code: "empty_output"
+            }
+        }
+    }
+
+    if ((kind === "set" || kind === "governor" || kind === "sync-persistent-state" || kind === "startup-apply") && (combined.indexOf("permission denied") !== -1 || combined.indexOf("operation not permitted") !== -1 || combined.indexOf("read-only file system") !== -1)) {
         return {
             details: details,
             code: "permission_denied"
@@ -153,8 +133,15 @@ function diagnoseCommand(kind, exitCode, stdout, stderr) {
         }
     }
 
+    if (kind === "sync-persistent-state") {
+        return {
+            details: details,
+            code: "sync_persistent_state_failed"
+        }
+    }
+
     return {
         details: details,
-        code: exitCode === 0 ? "refresh_failed" : "refresh_exit_" + exitCode
+        code: "state_read_failed"
     }
 }
